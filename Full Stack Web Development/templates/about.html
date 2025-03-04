@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Automotive Shop</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #3498db;
+        }
+        .about-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #34495e;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .team-member {
+            text-align: center;
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        .team-member img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .team-member h3 {
+            color: #2c3e50;
+            margin: 5px 0;
+        }
+        .team-member p {
+            color: #7f8c8d;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('about') }}">About Us</a>
+                <a href="{{ url_for('contact') }}">Contact Us</a>
+                {% if 'user_id' in session %}
+                    <a href="{{ url_for('profile') }}">Profile</a>
+                    <a href="{{ url_for('wishlist') }}">Wishlist</a>
+                    <a href="{{ url_for('my_orders') }}">My Orders</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('register') }}">Register</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="about-container">
+            <h2>About Us</h2>
+            <p>Welcome to Automotive Shop, your one-stop destination for all automotive needs. We are passionate about providing high-quality products and exceptional customer service to car enthusiasts and everyday drivers alike.</p>
+            <p>Founded in 2020, our mission is to make automotive shopping easy, affordable, and enjoyable. Whether you're looking for parts, accessories, or tools, we’ve got you covered with a wide range of products and unbeatable prices.</p>
+            <h2>Our Team</h2>
+            <div class="team">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='team/john.jpg') }}" alt="John Doe">
+                    <h3>John Doe</h3>
+                    <p>Founder & CEO</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='team/jane.jpg') }}" alt="Jane Smith">
+                    <h3>Jane Smith</h3>
+                    <p>Head of Sales</p>
+                </div>
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='team/mike.jpg') }}" alt="Mike Johnson">
+                    <h3>Mike Johnson</h3>
+                    <p>Customer Support Lead</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
